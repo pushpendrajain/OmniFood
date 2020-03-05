@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+	    <link rel="stylesheet" type="text/css" href="../vendor/css/Grid.css">
+        <link rel="stylesheet" type="text/css" href="../vendor/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../vendor/css/ionicons.min.css">
+		<link rel="stylesheet" type="text/css" href="../vendor/css/animate.css">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="google-signin-client_id" content="457477699523-8rol5c9sa73k4kuh38neruok23n8vsk1.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../index1.js"></script>
+     
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400&display=swap" rel="stylesheet">
+	  <style>
+        .g-signin2{
+          margin-left: 500px;
+          margin-top: 200px;
+        }
+	  </style>
+	  <link rel="stylesheet" type="text/css" href="../resource/css/style.css">
+	  <title>SignUp</title>
+  </head>
+  <body>
+	  <h1 style="color: #d99b73; text-align: center;">Sign Up</h1>
+	  <form>
+	  	<div class="row">
+                        <div class="col span-1-of-3">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="text" name="name" id="name" placeholder="Your Name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="email" name="email" id="email" placeholder="Your Email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label for="plan">Plan</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <select name="plan" id="plan">
+                                <option value="premium" selected>Premium</option>
+                                <option value="pro">Pro</option>
+                                <option value="starter">Starter</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label for="news">Newsletter</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="checkbox" name="news" id="news" checked>Yes, Please
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label>Address</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <textarea name="address" placeholder="Your Address"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label>&nbsp</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input class="submit" type="submit" name="submit" value="Send it!">
+							<span id="message"></span>
+							<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+							<button onclick="signOut()" class="btn btn-danger">SignOut</button>
+                        </div>
+						
+                    </div>
+	  </form>
+	  <script>
+               $(document).ready(function(){
+    			var to;
+				$(".submit").click(function(){
+        		to=$("#email").val();
+        		
+        		$("#message").text("Sending E-mail...Please wait");
+        		$.get("http://localhost:3000/signup/send",{to:to},function(data){
+        		if(data=="sent")
+        		{
+					$("#message").empty().html("Email is been sent at " + to + " . Please check inbox!");
+				}
+				});
+    			});
+			   	});
+		</script>
+  </body>
+</html>
