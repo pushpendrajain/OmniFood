@@ -10,7 +10,8 @@ var path=require('path');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    
+    	//user=''
+	//pass=''
   }
 });
 
