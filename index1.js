@@ -10,8 +10,7 @@ var path=require('path');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'yoursolarpanelworld@gmail.com',
-    pass: 'academic8'
+    
   }
 });
 
